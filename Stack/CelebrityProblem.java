@@ -1,5 +1,5 @@
 package Stack;
-// 0 1 0   >>> every one knows celebrity but not he!
+// 0 1 0             >>> every one knows celebrity but not he!
 // 0 0 0
 // 0 1 0
 public class CelebrityProblem {

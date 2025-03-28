@@ -8,10 +8,10 @@ public class Recursion1 {
     public static void main(String[] args) {
 //        System.out.println(factorial(5));
 //        System.out.println(fibonacci(5));
-//        List<String> list = new ArrayList<>();
-//        subSequence("baa","",list);
-//        for(String str : list)
-//            System.out.print(str + " ");
+        List<String> list = new ArrayList<>();
+        subSequence("baa","",list);
+        for(String str : list)
+            System.out.print(str + " ");
 //
 //        List<String> list = new ArrayList<>();
 //        coinToss(3,list,"");
@@ -52,7 +52,7 @@ public class Recursion1 {
 //    System.out.println(result);
 
 
-        combinatioinOfNumber1(new int[]{1,2,3},new ArrayList<>(),0);
+//        combinatioinOfNumber1(new int[]{1,2,3},new ArrayList<>(),0);
 
 
 
@@ -83,7 +83,6 @@ public class Recursion1 {
         char ch = str.charAt(0);
         subSequence(str.substring(1),ans+ch,list);
         subSequence(str.substring(1),ans,list);
-
 //      subSequence(str.substring(1), ans+(int)ch );
     }
     static boolean isPalindrom(String str){

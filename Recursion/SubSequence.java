@@ -12,7 +12,7 @@ public class SubSequence {
         System.out.println(result);
     }
     private static void subSeq(List<List<Integer>> list, List<Integer> result, int arr[], int idx){
-        if(idx == arr.length   ){
+        if(idx == arr.length)   {
             list.add(new ArrayList<>(result));
             return;
         }

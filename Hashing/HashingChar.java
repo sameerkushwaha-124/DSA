@@ -9,6 +9,7 @@ public class HashingChar {
             int val = str.charAt(i) - 'a';
             arr[val]++;
         }
+
         String given = "abcd";
         System.out.println("Given: "+ given);
         System.out.print("Respective Frequency : ");
