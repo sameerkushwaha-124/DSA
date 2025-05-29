@@ -8,13 +8,13 @@ public class SortingTech {
 //            System.out.print(ans[i]+" ");
 //        }
 
-        int arr[]= {7,6,9,4,11,2,0};
+        int[] arr= {7,6,9,4,11,2,0};
         quick_sort(arr,0,arr.length-1);
-        for(int i=0;i<arr.length;i++){
-            System.out.print(arr[i]+" ");
+        for (int j : arr) {
+            System.out.print(STR."\{j} ");
         }
-//        int arr[] = {20,50,10,65,90};
-//          selectionSort(arr);
+//        int[] arr = {20,50,10,65,90};
+//        selectionSort(arr);
 //        System.out.println(Arrays.toString(arr));
 
 //        bubbleSort(arr);
@@ -28,8 +28,8 @@ public class SortingTech {
             return new int[]{arr[si]};
         }
         int mid=(si+ei)/2;
-        int ans1[]=mergesort(arr,si,mid);
-        int ans2[]=mergesort(arr,mid+1,ei);
+        int ans1[] = mergesort(arr,si,mid);
+        int ans2[] = mergesort(arr,mid+1,ei);
         return mergeArrays(ans1,ans2);
     }
     public static  int[] mergeArrays(int[] arr1, int[] arr2) {
@@ -116,7 +116,7 @@ public class SortingTech {
     // insertion sort.
     public static void insertionSort(int arr[]){
         for (int i = 1;i < arr.length; i++){
-            int j =i;
+            int j = i;
             while(j>0&&arr[j]<arr[j-1]){
                 int temp = arr[j-1];
                 arr[j-1] = arr[j];

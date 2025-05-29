@@ -3,7 +3,7 @@ import java.util.*;
 // BFS Traversal - Level Order Traversal
 
 public class LevelOrd {
-    class TreeNode {
+    static class TreeNode {
         int val;
         TreeNode left, right;
 
@@ -12,7 +12,7 @@ public class LevelOrd {
             val = item;
             left = right = null;
         }
-    }
+    };
     public List<List<Integer>> levelOrder(TreeNode root,List<Double> list) {
         List<List<Integer>> result = new ArrayList<>();
         if(root==null)

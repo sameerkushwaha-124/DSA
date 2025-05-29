@@ -33,15 +33,15 @@ public class ConnectedComponent {
         return count;
     }
     // DFS to find all nodes in the component
-    // you can use recurrsion as well as stack
+    // you can use recursion as well as stack
     private static void dfs(Map<Integer, List<Integer>> graph, int src, int[] visited,
                      List<Integer> component) {
         visited[src] = 1;
         component.add(src);
 
-        for (int nbrs : graph.get(src)) {
-            if (visited[nbrs] == 0) {
-                dfs(graph, nbrs, visited, component);
+        for (int nbr : graph.get(src)) {
+            if (visited[nbr] == 0) {
+                dfs(graph, nbr, visited, component);
             }
         }
     }
@@ -53,8 +53,8 @@ public class ConnectedComponent {
 
         int actualEdges = 0;
         for (int node : component) {
-            for (int neighbor : graph.get(node)) {
-                if (component.contains(neighbor)) {
+            for (int neighbor : graph.get(node)){
+                if (component.contains(neighbor)){
                     actualEdges++;
                 }
             }

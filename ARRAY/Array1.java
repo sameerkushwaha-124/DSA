@@ -1,6 +1,6 @@
 package ARRAY;
-
 public class Array1 {
+
     public static void main(String args[])
     {
         // int arg[]= new int[length of array];
@@ -13,6 +13,8 @@ public class Array1 {
             System.out.print(arg[i]+ " ");
             i++;
         }
+
+
 
 
 

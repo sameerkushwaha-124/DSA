@@ -3,80 +3,74 @@ import java.util.*;
 
 public class DetectCycleUDGBFS {
     static class Pair {
-        int node;
         int parent;
-        Pair(int node, int parent) {
+        int node;
+        Pair(int parent, int node) {
             this.parent = parent;
             this.node = node;
         }
     }
 
-    public static void cycleDetect(int[][] adjList, int v) {
+    public static String cycleDetection(int[][] edges, int n, int m) {
+        // Initialize adjacency list
         List<List<Integer>> graph = new ArrayList<>();
-        for (int i = 0; i < v; i++) {
+        for (int i = 0; i < n; i++) {
             graph.add(new ArrayList<>());
         }
 
-        // Build the graph from adjacency list
-        for (int i = 0; i < adjList.length; i++) {
-            for (int j : adjList[i]) {
-                // To avoid duplicate edges, we can add only when i < j
-                // But since we're using adjacency list, duplicates won't affect correctness
-                graph.get(i).add(j);
-                graph.get(j).add(i);
-            }
+        // Build the undirected graph
+        for (int[] edge : edges) {
+            graph.get(edge[0]).add(edge[1]);
+            graph.get(edge[1]).add(edge[0]);
         }
 
-        if (BFS(graph, v)) {
-            System.out.println("Cycle detected");
-        } else {
-            System.out.println("No cycle detected");
-        }
-    }
+        // Visited array
+        int[] visited = new int[n];
 
-    public static boolean BFS(List<List<Integer>> graph, int v) {
-        int[] visited = new int[v];
-
-        for (int i = 0; i < v ; i++) {
+        // For all components (disconnected graphs)
+        for (int i = 0; i < n; i++) {
             if (visited[i] == 0) {
-                if (bfsCycleCheck(graph, i, visited)) {
-                    return true;
+                if (hasCycle(graph, i, visited)) {
+                    return "Yes";
                 }
             }
         }
-        return false;
+
+        return "No";
     }
 
-    public static boolean bfsCycleCheck(List<List<Integer>> graph, int start, int[] visited) {
+    public static boolean hasCycle(List<List<Integer>> graph, int start, int[] visited) {
         Queue<Pair> q = new LinkedList<>();
-        q.add(new Pair(start,-1));
-        while(!q.isEmpty()){
+        q.add(new Pair(-1, start));
+        visited[start] = 1;
+
+        while (!q.isEmpty()) {
             Pair p = q.remove();
             int parent = p.parent;
             int node = p.node;
 
-            visited[node] = 1;
-            for(int nbr : graph.get(node)){
-                if(nbr != parent){
-                    if(visited[nbr] != 1){
-                        q.add(new Pair(nbr,node));
-                    }else{
-                        return true;
+            for (int nbr : graph.get(node)) {
+                if (nbr != parent) {
+                    if (visited[nbr] == 0) {
+                        visited[nbr] = 1;
+                        q.add(new Pair(node, nbr));
+                    } else {
+                        return true; // Cycle found
                     }
                 }
             }
-
         }
+
         return false;
     }
 
+    // Example usage
     public static void main(String[] args) {
-        // Test case 1: Graph with cycle
-        int[][] grid1 = {{1}, {0, 2, 4}, {1, 3}, {2, 4}, {1, 3}};
-        cycleDetect(grid1, 5);  // Should print "Cycle detected"
+        int[][] edges1 = {{0, 1}, {1, 2}, {2, 0}}; // Has cycle
+        System.out.println(cycleDetection(edges1, 3, 3)); // Output: Yes
 
-        // Test case 2: Graph without cycle
-        int[][] grid2 = {{}, {2}, {1,3}, {2}};
-        cycleDetect(grid2, 4);  // Should print "No cycle detected"
+        int[][] edges2 = {{0, 1}, {1, 2}, {2, 3}}; // No cycle
+        System.out.println(cycleDetection(edges2, 4, 3)); // Output: No
     }
+
 }

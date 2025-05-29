@@ -5,13 +5,12 @@ public class AdjMatrix {
         Scanner sc = new Scanner(System.in);
         int vertex = sc.nextInt();
         int edge = sc.nextInt();
-        int graph[][] = new int[vertex+1][edge+1];
+        int[][] graph = new int[vertex+1][edge+1];
         for(int i = 0; i < edge; i++){
             int u = sc.nextInt();
             int v = sc.nextInt();
             graph[u][v] = 1;
             graph[v][u]  = 1;
         }
-        System.out.println(graph);
     }
 }

@@ -7,5 +7,7 @@ public class CharBasic {
         {
             System.out.println(ch[i]);
         }
+
     }
+
 }

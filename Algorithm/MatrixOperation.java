@@ -2,7 +2,7 @@ package Algorithm;
 
 public class MatrixOperation {
     public static void main(String[] args) {
-        // printing all permutation of 3x3 matrix.
+        // printing all permutation of matrix.
         int[][] matrix = {
                 {1, 2, 3, 4},
                 {5, 6, 7, 8},

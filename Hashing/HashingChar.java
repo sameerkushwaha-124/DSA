@@ -16,5 +16,9 @@ public class HashingChar {
         for(int i = 0; i < given.length(); i++){
             System.out.print(arr[str.charAt(i)-'a']+" ");
         }
+        System.out.println();
+        System.out.println('A'+'a');
+
+        System.out.println((char)(0 + 'a'));
     }
 }

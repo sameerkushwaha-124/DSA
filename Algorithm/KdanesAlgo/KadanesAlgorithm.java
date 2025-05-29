@@ -2,7 +2,7 @@ package Algorithm.KdanesAlgo;
 
 public class KadanesAlgorithm {
 
-    // Maximum Subarray Sum (Kadane's Algorithm)
+    // Maximum SubArray Sum (Kadane's Algorithm)
     public static int maxSubArray(int[] nums) {
         int current_sum = nums[0];
         int max_sum = nums[0];
@@ -11,10 +11,11 @@ public class KadanesAlgorithm {
             current_sum = Math.max(nums[i], current_sum + nums[i]);
             max_sum = Math.max(max_sum, current_sum);
         }
+
         return max_sum;
     }
 
-    // Maximum Circular Subarray Sum
+    // Maximum Circular SubArray Sum
     public static int maxCircularSubArray(int[] nums) {
         int totalSum = nums[0], maxSum = nums[0], minSum = nums[0];
         int currentMax = nums[0], currentMin = nums[0];
@@ -79,14 +80,11 @@ public class KadanesAlgorithm {
         int n = nums.length;
         int[] prefixSum = new int[n];
         prefixSum[0] = nums[0];
-
         for (int i = 1; i < n; i++) {
             prefixSum[i] = prefixSum[i - 1] + nums[i];
         }
-
         int maxSum = Integer.MIN_VALUE;
         int currentMax = prefixSum[K - 1];
-
         for (int i = K; i < n; i++) {
             currentMax = Math.max(currentMax, prefixSum[i - K]);
             maxSum = Math.max(maxSum, prefixSum[i] - currentMax);

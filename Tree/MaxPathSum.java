@@ -2,8 +2,6 @@ package Tree;
 
 public class MaxPathSum {
 
-
-
     class TreeNode {
         int val;
         TreeNode left, right;

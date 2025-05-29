@@ -1,35 +1,40 @@
 package Algorithm.KdanesAlgo;
-// kdanes algo to print sum as well as sub array with maximum value.
-// (Important : null sub arr included[])
+
 public class MaximumSumSubArray {
     public static void main(String[] args) {
+        int[] arr = {-2, -3, 4, 2, -2, -1, 6, -3};
+
+        int maxSum = Integer.MIN_VALUE;
+        int currSum = 0;
         int start = 0;
-        int ans_start = -1;
-        int ans_last = -1;
-        int arr[] = {-2,-3,-4,-2,-2,-1,-6,-3};
-        int max = Integer.MIN_VALUE;
-        int sum = 0;
-        for(int i = 0; i < arr.length; i++){
-            if(sum == 0){
+
+        int ansStart = -1;
+        int ansEnd = -1;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (currSum == 0) {
                 start = i;
             }
-            sum = sum + arr[i];
 
-            if(sum < 0){
-                sum = 0;
+            currSum += arr[i];
+
+            if (currSum > maxSum) {
+                maxSum = currSum;
+                ansStart = start;
+                ansEnd = i;
             }
-            if(sum == 0){
-                max = sum;
-                ans_start = start;
-                ans_last = i;
+
+            if (currSum < 0) {
+                currSum = 0;
             }
         }
-        if(ans_last == 0 && ans_start == 0 ){
-            System.out.println(-1);
-            System.out.println(-1);
-            return;
+
+        System.out.println("Maximum Subarray Sum: " + maxSum);
+        System.out.println("Subarray indices: [" + ansStart + ", " + ansEnd + "]");
+        System.out.print("Subarray: ");
+        for (int i = ansStart; i <= ansEnd; i++) {
+            System.out.print(arr[i] + " ");
         }
-        System.out.println(ans_start);
-        System.out.println(ans_last);
     }
 }
+

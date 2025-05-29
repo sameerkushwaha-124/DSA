@@ -2,7 +2,7 @@ package Algorithm.TwoPointer;
 
 public class TwoPointer {
     public static void main(String[] args) {
-        // two pointer Approach.
+        // two pointer Approach. Mostly applied for sorted array.
         int arr[] = {10, 20,40, 50, 60, 70, 80, 90 ,100};
         int target =  100;
         int i = 0;
